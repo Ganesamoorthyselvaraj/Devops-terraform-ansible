@@ -6,7 +6,7 @@
         name: httpd
         state: installed
     - name: configure
-      shell: "echo Hello Lumen guys , raman khanna this side  !! > /var/www/html/index.html"
+      shell: "echo Hello Lumen guys , ganesh this side  !! > /var/www/html/index.html"
     - name: start service
       service:
         name: httpd

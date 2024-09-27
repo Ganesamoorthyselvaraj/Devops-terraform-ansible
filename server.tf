@@ -12,6 +12,7 @@ region = "us-east-1"
 }
 resource "aws_instance" "myawsserver" {
   ami = "ami-0e54eba7c51c234f6"
+  vpc_id = "vpc-00dae5f3df962676d"
   instance_type = "t2.micro"
   key_name = "ganesh-import"
 

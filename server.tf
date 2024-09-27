@@ -10,9 +10,13 @@ terraform {
 provider "aws" {
 region = "us-east-1"
 }
+
+data "aws_security_group" "existing_sg" {
+  name = "gaqnesh_allow_ssh"
+}
 resource "aws_instance" "myawsserver" {
   ami = "ami-0e54eba7c51c234f6"
-  vpc_security_group_ids = "gaqnesh_allow_ssh"
+  vpc_security_group_ids = [data.aws_security_group.existing_sg.id]
   instance_type = "t2.micro"
   key_name = "ganesh-import"
 

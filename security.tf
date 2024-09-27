@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+  name        = "gaqnesh_allow_ssh"
   description = "Allow SSH inbound traffic"
   vpc_id      = "vpc-00dae5f3df962676d"
 

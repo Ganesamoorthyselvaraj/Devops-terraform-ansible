@@ -12,7 +12,7 @@ region = "us-east-1"
 }
 resource "aws_instance" "myawsserver" {
   ami = "ami-0e54eba7c51c234f6"
-  vpc_security_group_ids = "vpc-00dae5f3df962676d"
+  vpc_security_group_ids = "gaqnesh_allow_ssh"
   instance_type = "t2.micro"
   key_name = "ganesh-import"
 

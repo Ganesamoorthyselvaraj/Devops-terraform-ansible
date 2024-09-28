@@ -14,7 +14,7 @@ region = "us-east-1"
 data "aws_security_group" "existing_sg" {
   filter {
     name   = "group-name"
-    values = ["Ganesh-wizard-380"]
+    values = [aws_security_group.allow_ssh.id]
   }
 }
 variable "elb-names" {

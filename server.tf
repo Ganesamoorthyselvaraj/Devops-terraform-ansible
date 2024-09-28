@@ -12,8 +12,10 @@ region = "us-east-1"
 }
 
 data "aws_security_group" "existing_sg" {
-  name = "Ganesh-wizard-380"
-}
+  filter {
+    name   = "group-name"
+    values = ["Ganesh-wizard-380"]
+  }
 
 variable "elb-names" {
   type = list

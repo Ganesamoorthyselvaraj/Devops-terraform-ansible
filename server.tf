@@ -12,7 +12,7 @@ region = "us-east-1"
 }
 
 data "aws_security_group" "existing_sg" {
-  name = "gaqnesh_allow_ssh"
+  name = "Ganesh-wizard-38"
 }
 
 variable "elb-names" {

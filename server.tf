@@ -30,6 +30,7 @@ resource "aws_instance" "myawsserver" {
 count =3  
 ami = "ami-0e54eba7c51c234f6"
     key_name = "ganesh-import"
+    instance_type = var.list[count.index]
 network_interface {
     network_interface_id = aws_network_interface.example[count.index].id
     device_index         = 0

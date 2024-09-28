@@ -65,6 +65,12 @@ resource "aws_instance" "myawsserver" {
   }
 
   provisioner "local-exec" {
-    command = "echo The server's IP address is ${self.public_ip} && echo ${self.public_ip} > /tmp/inv"
+    command = <<EOT
+      echo "[master]" > inventory
+      echo "${aws_instance.myawsserver[0].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
+      echo "[nodes]" >> inventory
+      echo "${aws_instance.myawsserver[1].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
+      echo "${aws_instance.myawsserver[2].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
+    EOT
   }
 }

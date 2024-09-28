@@ -12,7 +12,7 @@ region = "us-east-1"
 }
 
 data "aws_security_group" "existing_sg" {
-  name = "Ganesh-wizard-38"
+  name = "Ganesh-wizard-380"
 }
 
 variable "elb-names" {

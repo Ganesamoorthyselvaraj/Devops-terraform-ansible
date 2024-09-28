@@ -29,9 +29,7 @@ variable "list" {
 resource "aws_instance" "myawsserver" {
 count =3  
 ami = "ami-0e54eba7c51c234f6"
-  vpc_security_group_ids = [data.aws_security_group.existing_sg.id]
-  instance_type = var.list[count.index]
-  key_name = "ganesh-import"
+    key_name = "ganesh-import"
 network_interface {
     network_interface_id = aws_network_interface.example[count.index].id
     device_index         = 0

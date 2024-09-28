@@ -16,7 +16,7 @@ data "aws_security_group" "existing_sg" {
     name   = "group-name"
     values = ["Ganesh-wizard-380"]
   }
-
+}
 variable "elb-names" {
   type = list
   default = ["ganesh-Kub-Master", "ganesh-Kub-node1","ganesh-Kub-node2"]

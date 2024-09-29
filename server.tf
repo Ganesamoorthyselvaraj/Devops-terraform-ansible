@@ -17,7 +17,6 @@ count= 3
 tags= {
 Name= var.elb-names[count.index]
 }
-}
 
   provisioner "local-exec" {
     command = <<EOT

@@ -20,11 +20,7 @@ Name= var.elb-names[count.index]
 
   provisioner "local-exec" {
     command = <<EOT
-      echo "[master]" > inventory
-      echo "${aws_instance.team42[0].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
-      echo "[nodes]" >> inventory
-      echo "${aws_instance.team42[1].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
-      echo "${aws_instance.team42[2].private_ip} ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/ganesh-import.pem" >> inventory
+    command = "echo The servers IP address is ${self.public_ip} && echo ${self.public_ip} > /tmp/inv"
     EOT
   }
 }

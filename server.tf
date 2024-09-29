@@ -21,9 +21,9 @@ Name= var.elb-names[count.index]
   provisioner "local-exec" {
 command = <<EOT
       if [ ${count.index} -eq 0 ]; then
-        echo ${self.public_ip} > master_hostname
+        echo ${self.private_ip} > master_hostname
       else
-        echo ${self.public_ip} >> nodes_hostname
+        echo ${self.private_ip} >> nodes_hostname
       fi
     EOT
     

@@ -1,0 +1,6 @@
+- name: Install Docker, kubelet, kubeadm, and kubectl on Kubernetes nodes
+  hosts: master
+  become: true
+  tasks:
+    - name: Install Calico network plugin
+      shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml

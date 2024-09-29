@@ -1,11 +1,11 @@
 variable "elb-names" {
   type = list
-  default = ["ganesh-Kub-Master1", "ganesh-Kub-node1","ganesh-Kub-node2"]
+  default = ["ganesh-Kub-Master", "ganesh-Kub-node1","ganesh-Kub-node2"]
 }
 
 variable "list" {
   type = list
-  default = ["t2.medium","t2.medium","t2.medium"]
+  default = ["t2.large","t2.medium","t2.medium"]
 }
 
 

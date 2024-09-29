@@ -1,0 +1,33 @@
+---
+- name: Copy join_command from Master to Ansible Controller and then to Worker Nodes
+  hosts: master  # Running on the Ansible controller
+  become: true
+  tasks:
+    - name: Copy join_command from Master Node to Ansible Controller
+      fetch:
+        src: /root/kube/join_command  # Source path on the master node
+        dest: /tmp/  # Destination path on the controller
+        flat: yes  # Copy the file without creating a directory structure
+- name: Copy join_command to Worker Nodes and Execute Join Command
+  hosts: workers
+  become: yes
+  tasks:
+    # Ensure /opt/kube directory exists on worker nodes
+    - name: Ensure /opt/kube directory exists
+      file:
+        path: /opt/kube
+        state: directory
+        mode: '0755'
+    # Copy join_command from Ansible Controller to Worker Nodes
+    - name: Copy join_command from Ansible Controller
+      copy:
+        src: /tmp/join_command  # Path on the Ansible controller
+        dest: /opt/kube/join_command  # Path on the worker nodes
+    # Make join_command executable
+    - name: Make join_command executable
+      file:
+        path: /opt/kube/join_command
+        mode: '0755'
+    # Execute the join command directly
+    - name: Execute the join command
+      shell: /opt/kube/join_command --cri-socket unix:///var/run/cri-dockerd.sock  # Append cri-socket to the command

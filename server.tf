@@ -19,7 +19,7 @@ Name= var.elb-names[count.index]
 }
 
   provisioner "local-exec" {
-    command = "echo The servers IP address is ${self.public_ip} && echo ${self.public_ip} > /tmp/inv"
+    command = "echo The servers IP address is ${self.public_ip} && echo ${self.public_ip} > hostname"
     
   }
 }

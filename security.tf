@@ -1,5 +1,5 @@
 resource "aws_security_group" "var_demo" {
-  name        = "ganesh-securitygroup"
+  name        = "ganesh-securitygroup1"
   vpc_id      = "vpc-00dae5f3df962676d"
 
   ingress {

@@ -20,6 +20,13 @@ Name= var.elb-names[count.index]
 
   provisioner "local-exec" {
     command = "echo The servers IP address is ${self.public_ip} && echo ${self.public_ip} > hostname"
+command = <<EOT
+      if [ ${count.index} -eq 0 ]; then
+        echo ${self.public_ip} > master_hostname
+      else
+        echo ${self.public_ip} >> nodes_hostname
+      fi
+    EOT
     
   }
 }

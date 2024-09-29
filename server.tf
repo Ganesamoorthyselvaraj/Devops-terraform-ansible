@@ -11,7 +11,7 @@ variable "list" {
 
 resource "aws_instance" "team42" {
 ami = "ami-0e86e20dae9224db8"
-key_name = "ganesh-Virginia"
+key_name = "ganesh-import"
 count= 3
    instance_type = var.list[count.index]
 tags= {

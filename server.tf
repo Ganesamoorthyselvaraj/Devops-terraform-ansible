@@ -1,11 +1,11 @@
 variable "elb-names" {
   type = list
-  default = ["ganesh-Kub-Master", "ganesh-Kub-node1","ganesh-Kub-node2"]
+  default = ["ganesh-Kub-node2", "ganesh-Kub-node1","ganesh-Kub-Master"]
 }
 
 variable "list" {
   type = list
-  default = ["t2.large","t2.medium","t2.medium"]
+  default = ["t2.medium","t2.medium","t2.large"]
 }
 
 
@@ -20,9 +20,8 @@ Name= var.elb-names[count.index]
 
   provisioner "local-exec" {
     command = <<EOT
-     echo "" > hosts.ini
       if [ ${count.index} -eq 0 ]; then
-        echo "[master]" >> hosts.ini
+        echo "[master]" > hosts.ini
         echo "${self.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> hosts.ini
       fi
       if [ ${count.index} -eq 1 ]; then

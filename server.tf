@@ -20,8 +20,9 @@ Name= var.elb-names[count.index]
 
   provisioner "local-exec" {
     command = <<EOT
+     echo "" > hosts.ini
       if [ ${count.index} -eq 0 ]; then
-        echo "[master]" > hosts.ini
+        echo "[master]" >> hosts.ini
         echo "${self.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> hosts.ini
       fi
       if [ ${count.index} -eq 1 ]; then

@@ -12,10 +12,12 @@
       apt:
         name: docker.io
         state: present  # Ensures Docker is installed
-    # Add the Kubernetes GPG key, which is required for securely downloading Kubernetes packages
     - name: Add Kubernetes GPG key
       shell: |
         curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      async: 300  # Increase timeout to 5 minutes
+      poll: 0
+
     # Add the Kubernetes repository to the sources list to allow the installation of Kubernetes tools
     - name: Add Kubernetes apt repository
       shell: |

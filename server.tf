@@ -21,7 +21,6 @@ resource "aws_instance" "team42" {
   provisioner "local-exec" {
    command = <<EOT
       if  [ ${count.index} -eq 2 ]; then
-echo "[workers]" > hosts.ini
 echo "${self.private_ip} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> hosts.ini
 elif [ ${count.index} -eq 1 ]; then
         echo "[workers]" >> hosts.ini

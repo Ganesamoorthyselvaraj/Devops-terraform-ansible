@@ -17,6 +17,9 @@ resource "aws_instance" "team42" {
   tags = {
     Name = var.elb-names[count.index]
   }
+  root_block_device {
+    volume_size = 20
+  }
 
   provisioner "local-exec" {
    command = <<EOT

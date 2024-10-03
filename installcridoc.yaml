@@ -1,5 +1,6 @@
+---
 - name:  Install cri-dockerd
-  hosts:  master
+  hosts:  all
   become: true
   tasks:
     # Download and install cri-dockerd
